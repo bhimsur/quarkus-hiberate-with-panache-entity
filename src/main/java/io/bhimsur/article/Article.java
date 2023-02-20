@@ -1,4 +1,4 @@
-package io.bhimsur;
+package io.bhimsur.article;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 

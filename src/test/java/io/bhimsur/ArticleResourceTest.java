@@ -2,6 +2,8 @@ package io.bhimsur;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.bhimsur.article.Article;
+import io.bhimsur.article.ArticleResource;
 import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.Header;

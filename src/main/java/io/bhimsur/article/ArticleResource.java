@@ -1,4 +1,4 @@
-package io.bhimsur;
+package io.bhimsur.article;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
