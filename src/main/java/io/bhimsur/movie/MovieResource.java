@@ -7,7 +7,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Path("/api/movie")
 @Produces(MediaType.APPLICATION_JSON)
@@ -18,10 +17,7 @@ public class MovieResource {
     @GET
     public Response findAll() {
         return Response
-                .ok(repository.findAll()
-                        .stream()
-                        .map(movie -> new Movie(movie.getId(), movie.getTitle(), movie.getCountry(), movie.getRelease()))
-                        .collect(Collectors.toList()))
+                .ok(repository.listAll())
                 .build();
     }
 
