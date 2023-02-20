@@ -1,7 +1,7 @@
 package io.bhimsur.movie;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "movie")
@@ -15,12 +15,12 @@ public class Movie {
     @Column(name = "country")
     private String country;
     @Column(name = "release")
-    private LocalDate release;
+    private Date release;
 
     public Movie() {
     }
 
-    public Movie(Long id, String title, String country, LocalDate release) {
+    public Movie(Long id, String title, String country, Date release) {
         this.id = id;
         this.title = title;
         this.country = country;
@@ -51,11 +51,11 @@ public class Movie {
         this.country = country;
     }
 
-    public LocalDate getRelease() {
+    public Date getRelease() {
         return release;
     }
 
-    public void setRelease(LocalDate release) {
+    public void setRelease(Date release) {
         this.release = release;
     }
 }
