@@ -1,18 +1,16 @@
-package io.bhimsur;
+package io.bhimsur.article;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.bhimsur.article.Article;
-import io.bhimsur.article.ArticleResource;
 import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
-import static io.restassured.RestAssured.given;
 
 @QuarkusTest
 @TestHTTPEndpoint(ArticleResource.class)
@@ -21,7 +19,7 @@ class ArticleResourceTest {
 
     @Test
     void findAll() {
-        given()
+        RestAssured.given()
                 .get()
                 .then()
                 .statusCode(200)
@@ -30,7 +28,7 @@ class ArticleResourceTest {
 
     @Test
     void findById() {
-        given()
+        RestAssured.given()
                 .get("1")
                 .then()
                 .statusCode(200)
@@ -39,7 +37,7 @@ class ArticleResourceTest {
 
     @Test
     void findByTitleLike() {
-        given()
+        RestAssured.given()
                 .queryParam("title", "Quarkus")
                 .when()
                 .get("/query")
@@ -51,7 +49,7 @@ class ArticleResourceTest {
 
     @Test
     void save() throws JsonProcessingException {
-        given()
+        RestAssured.given()
                 .header(new Header("Content-Type", "application/json"))
                 .header(new Header("Accept", "application/json"))
                 .body(objectMapper.writeValueAsString(new Article("Getting Started", "Example Tutorial", "admin", new Date())))
